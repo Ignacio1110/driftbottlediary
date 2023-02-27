@@ -1,11 +1,10 @@
-import 'package:driftbottlediary/screens/diary/diary_page.dart';
-import 'package:driftbottlediary/screens/settings/setting_page.dart';
-import 'package:driftbottlediary/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
+import '../translations.dart';
 import 'bottom_nav_controller.dart';
+import 'diary/diary_page.dart';
+import 'settings/setting_page.dart';
 
 class MyHomePage extends GetView<BottomNavController> {
   const MyHomePage({super.key});
@@ -18,9 +17,9 @@ class MyHomePage extends GetView<BottomNavController> {
           index: controller.currentIndex.value,
           children: [
             DiaryPage(),
-            Center(
-              child: Text("2"),
-            ),
+            // Center(
+            //   child: Text("2"),
+            // ),
             SettingsPage(),
           ],
         ),
@@ -34,10 +33,10 @@ class MyHomePage extends GetView<BottomNavController> {
               icon: const Icon(Icons.mood_sharp),
               label: DiaryTranslations.drift_bottle.tr,
             ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.note),
-              label: DiaryTranslations.note.tr,
-            ),
+            // BottomNavigationBarItem(
+            //   icon: const Icon(Icons.note),
+            //   label: DiaryTranslations.note.tr,
+            // ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.settings),
               label: DiaryTranslations.settings.tr,

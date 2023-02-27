@@ -21,12 +21,12 @@ class MyApp extends StatelessWidget {
       locale: const Locale('zh', 'TW'),
       translations: DiaryTranslations(),
       fallbackLocale: const Locale('zh', 'TW'),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en', 'US'),
         Locale('zh', 'TW'),
       ],
@@ -34,24 +34,12 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: AppRoutes.SPLASHPAGE,
-          page: () => SplashPage(),
+          page: () => const SplashPage(),
         ),
         GetPage(
           name: AppRoutes.HOME,
-          page: () => MyHomePage(),
+          page: () => const MyHomePage(),
         ),
-        // GetPage(
-        //   name: AppRoutes.LOGIN,
-        //   page: () => LoginScreen(),
-        // ),
-        // GetPage(
-        //   name: AppRoutes.SIGNUP,
-        //   page: () => SignupScreen(),
-        // ),
-        // GetPage(
-        //   name: AppRoutes.PROFILE,
-        //   page: () => ProfileScreen(),
-        // ),
       ],
     );
   }

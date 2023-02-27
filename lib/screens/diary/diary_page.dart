@@ -68,9 +68,9 @@ class DiaryPage extends GetView<DiaryPageController> {
           SliverToBoxAdapter(
             child: ElevatedButton(
               onPressed: () {
-                controller.deleteTable();
+                // controller.deleteTable();
               },
-              child: Text('刪除table'),
+              child: Text(''),
             ),
           ),
         ],

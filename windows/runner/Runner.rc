@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.ignaciozhang85.driftbottlediary" "\0"
-            VALUE "FileDescription", "driftbottlediary" "\0"
+            VALUE "FileDescription", "Drift Bottle Diary" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "driftbottlediary" "\0"
+            VALUE "InternalName", "Drift Bottle Diary" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.ignaciozhang85.driftbottlediary. All rights reserved." "\0"
             VALUE "OriginalFilename", "driftbottlediary.exe" "\0"
-            VALUE "ProductName", "driftbottlediary" "\0"
+            VALUE "ProductName", "Drift Bottle Diary" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
