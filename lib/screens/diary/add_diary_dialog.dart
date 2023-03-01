@@ -1,3 +1,4 @@
+import 'package:driftbottlediary/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class AddDiaryDialog extends GetView<AddDiaryController> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('New Diary'),
+      title: Text(DiaryTranslations.new_diary.tr),
       content: SizedBox(
         height: Get.height * .4,
         child: Column(
@@ -48,13 +49,13 @@ class AddDiaryDialog extends GetView<AddDiaryController> {
           onPressed: () {
             Get.back();
           },
-          child: Text('CANCEL'),
+          child: Text(DiaryTranslations.cancel.tr),
         ),
         ElevatedButton(
           onPressed: () {
             controller.saveDiary();
           },
-          child: Text('SAVE'),
+          child: Text(DiaryTranslations.save.tr),
         ),
       ],
     );

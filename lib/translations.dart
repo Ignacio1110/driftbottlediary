@@ -19,6 +19,9 @@ class DiaryTranslations extends Translations {
   static const String switch_notification = 'switch_notification';
   static const String use_english = 'use_english';
   static const String mood_question = 'mood_question';
+  static const String new_diary = 'New Diary';
+  static const String save = 'save';
+  static const String cancel = 'cancel';
 
   //diary page
   static const String write_diary = 'write_diary';
@@ -35,6 +38,9 @@ class DiaryTranslations extends Translations {
     use_english: 'use_english',
     write_diary: 'write',
     mood_question: 'How are you feeling today?',
+    new_diary: 'New Diary',
+    save: 'save',
+    cancel: 'cancel',
   };
 
   static final Map<String, String> _zhTW = {
@@ -48,7 +54,10 @@ class DiaryTranslations extends Translations {
     switch_notification: '切換提醒',
     use_english: '使用英文',
     write_diary: '寫心情',
-    mood_question: '你的心情如何？'
+    mood_question: '你的心情如何？',
+    new_diary: '新日誌',
+    save: '儲存',
+    cancel: '取消'
   };
 
   static String get locale => Get.deviceLocale.toString();

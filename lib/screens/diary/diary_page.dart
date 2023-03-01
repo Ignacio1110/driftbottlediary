@@ -51,22 +51,27 @@ class DiaryPage extends GetView<DiaryPageController> {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   final diary = _diaries[index];
-                  return ListTile(
-                    title: Row(
-                      children: [
-                        FaIcon(diary.feelingLevel.getMoodIcon()),
-                        const SizedBox(
-                          width: 4.0,
+                  return Column(
+                    children: [
+                      ListTile(
+                        title: Row(
+                          children: [
+                            FaIcon(diary.feelingLevel.getMoodIcon()),
+                            const SizedBox(
+                              width: 4.0,
+                            ),
+                            Text(diary.title)
+                          ],
                         ),
-                        Text(diary.title)
-                      ],
-                    ),
-                    subtitle: Text(
-                        '${diary.date.day}-${diary.date.month}-${diary.date.year}'),
-                    trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: () {
-                      // TODO: Navigate to the detail page
-                    },
+                        subtitle: Text(
+                            '${diary.date.day}-${diary.date.month}-${diary.date.year}'),
+                        // trailing: Icon(Icons.arrow_forward_ios),
+                        // onTap: () {
+                        //   // TODO: Navigate to the detail page
+                        // },
+                      ),
+                      Divider(),
+                    ],
                   );
                 },
                 childCount: _diaries.length,

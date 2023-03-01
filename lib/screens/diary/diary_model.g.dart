@@ -23,8 +23,9 @@ Map<String, dynamic> _$DiaryToJson(Diary instance) => <String, dynamic>{
     };
 
 const _$MoodEnumMap = {
+  Mood.love: 'love',
   Mood.happy: 'happy',
+  Mood.neutral: 'neutral',
   Mood.sad: 'sad',
   Mood.angry: 'angry',
-  Mood.neutral: 'neutral',
 };

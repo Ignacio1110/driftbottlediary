@@ -23,4 +23,7 @@ flutter pub run flutter_launcher_icons -f <your config file name here>
 flutter pub run flutter_launcher_icons -f flutter_launcher_icons.yaml
 flutter pub run flutter_launcher_icons
 
+build runner
+
+flutter pub run  build_runner build
 
