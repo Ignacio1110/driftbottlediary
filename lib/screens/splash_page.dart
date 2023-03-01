@@ -12,7 +12,22 @@ class SplashPage extends GetView<SplashController> {
 
     return Scaffold(
       body: Center(
-        child: Text('Splash Screen'),
+        child: SizedBox(
+          width: Get.size.shortestSide * .3,
+          height: Get.size.shortestSide * .3,
+          child: ClipRect(
+            child: OverflowBox(
+              maxWidth: Get.size.shortestSide * .4,
+              maxHeight: Get.size.shortestSide * .4,
+              minHeight: Get.size.shortestSide * .4,
+              minWidth: Get.size.shortestSide * .4,
+              child: Image.asset(
+                'assets/icons/icon.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
