@@ -1,3 +1,4 @@
+import 'package:driftbottlediary/shared_module/cached_image_controller.dart';
 import 'package:driftbottlediary/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,11 +19,7 @@ class DiaryPage extends GetView<DiaryPageController> {
             title: Text(DiaryTranslations.app_title.tr),
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/images/bottle.jpg',
-                fit: BoxFit.cover,
-                alignment: Alignment.centerLeft,
-              ),
+              background: Get.find<CachedImageController>().bottleImage,
             ),
             actions: [
               Align(
