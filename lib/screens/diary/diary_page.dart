@@ -1,7 +1,7 @@
-import 'package:driftbottlediary/screens/diary/diary_model.dart';
 import 'package:driftbottlediary/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'diary_page_controller.dart';
 
@@ -19,7 +19,7 @@ class DiaryPage extends GetView<DiaryPageController> {
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                'assets/images/bottle.jpeg',
+                'assets/images/bottle.jpg',
                 fit: BoxFit.cover,
                 alignment: Alignment.centerLeft,
               ),
@@ -52,7 +52,15 @@ class DiaryPage extends GetView<DiaryPageController> {
                 (BuildContext context, int index) {
                   final diary = _diaries[index];
                   return ListTile(
-                    title: Text(diary.title),
+                    title: Row(
+                      children: [
+                        FaIcon(diary.feelingLevel.getMoodIcon()),
+                        const SizedBox(
+                          width: 4.0,
+                        ),
+                        Text(diary.title)
+                      ],
+                    ),
                     subtitle: Text(
                         '${diary.date.day}-${diary.date.month}-${diary.date.year}'),
                     trailing: Icon(Icons.arrow_forward_ios),
@@ -65,12 +73,18 @@ class DiaryPage extends GetView<DiaryPageController> {
               ),
             );
           }),
-          SliverToBoxAdapter(
-            child: ElevatedButton(
-              onPressed: () {
-                // controller.deleteTable();
-              },
-              child: Text(''),
+          const SliverToBoxAdapter(
+            child: Divider(),
+          ),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Center(
+                child: Text(
+                  "每個人都有想簡單述說的心情\n紀錄每天的心情，會發現生活總有一些開心的時刻 ^_^",
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ),
         ],

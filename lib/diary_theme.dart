@@ -36,8 +36,8 @@ class DiaryTheme {
   });
 
   static TextTheme textTheme = TextTheme(
-      bodyText1: TextStyle(color: kPrimarySwatch.shade50),
-      bodyText2: TextStyle(color: kPrimarySwatch.shade50));
+      bodyText1: TextStyle(color: kPrimarySwatch),
+      bodyText2: TextStyle(color: kPrimarySwatch));
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: kPrimary,

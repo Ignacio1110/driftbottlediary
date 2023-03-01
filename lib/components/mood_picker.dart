@@ -1,12 +1,33 @@
+import 'package:driftbottlediary/diary_theme.dart';
 import 'package:driftbottlediary/translations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum Mood {
+  love,
   happy,
-  sad,
-  angry,
   neutral,
+  sad,
+  angry;
+
+  IconData getMoodIcon() {
+    switch (this) {
+      case Mood.love:
+        return FontAwesomeIcons.faceGrinHearts;
+      case Mood.happy:
+        return FontAwesomeIcons.faceLaugh;
+      case Mood.neutral:
+        return FontAwesomeIcons.faceMeh;
+      case Mood.sad:
+        return FontAwesomeIcons.faceSadTear;
+      case Mood.angry:
+        return FontAwesomeIcons.faceAngry;
+
+      default:
+        throw Exception('Unknown mood: $this');
+    }
+  }
 }
 
 class MoodPicker extends StatelessWidget {
@@ -27,10 +48,11 @@ class MoodPicker extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildMoodButton(Mood.happy),
-            _buildMoodButton(Mood.sad),
             _buildMoodButton(Mood.angry),
+            _buildMoodButton(Mood.sad),
             _buildMoodButton(Mood.neutral),
+            _buildMoodButton(Mood.happy),
+            _buildMoodButton(Mood.love),
           ],
         ),
       ],
@@ -46,31 +68,17 @@ class MoodPicker extends StatelessWidget {
           }
         },
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(4),
-          backgroundColor: selectedMood == mood ? Colors.blue : Colors.grey,
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(4),
+          backgroundColor:
+              selectedMood == mood ? DiaryTheme.kPrimary : DiaryTheme.kColor3,
         ),
-        child: Icon(
-          _getMoodIcon(mood),
+        child: FaIcon(
+          mood.getMoodIcon(),
           color: Colors.white,
           size: 28,
         ),
       ),
     );
-  }
-
-  IconData _getMoodIcon(Mood mood) {
-    switch (mood) {
-      case Mood.happy:
-        return Icons.mood;
-      case Mood.sad:
-        return Icons.mood_bad;
-      case Mood.angry:
-        return Icons.sentiment_very_dissatisfied;
-      case Mood.neutral:
-        return Icons.sentiment_satisfied;
-      default:
-        throw Exception('Unknown mood: $mood');
-    }
   }
 }
