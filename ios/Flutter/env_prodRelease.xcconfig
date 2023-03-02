@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_env_prod.dart
+ASSET_PREFIX=env_prod
+BUNDLE_NAME=Drift Bottle Diary
+BUNDLE_DISPLAY_NAME=Drift Bottle Diary

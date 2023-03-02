@@ -27,3 +27,20 @@ build runner
 
 flutter pub run  build_runner build
 
+flutter_flavorizr
+flutter pub run flutter_flavorizr
+
+<meta-data
+android:name="com.google.android.gms.ads.APPLICATION_ID"
+android:value="@string/admob_id"/>
+
+[comment]: <> (flutter run --flavor env_dev -t lib/main_env_dev.dart)
+
+[comment]: <> (flutter run --flavor env_prod -t lib/main_env_prod.dart)
+flutter pub run flutter_flavorizr -p <processor_1>,<processor_2>
+flutter pub run flutter_flavorizr -p assets:download,assets:extract
+
+flutter pub run flutter_flavorizr -p android:buildGradle,
+
+
+
