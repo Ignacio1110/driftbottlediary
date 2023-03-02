@@ -41,6 +41,6 @@ flutter pub run flutter_flavorizr -p <processor_1>,<processor_2>
 flutter pub run flutter_flavorizr -p assets:download,assets:extract
 
 flutter pub run flutter_flavorizr -p android:buildGradle,
-
+ios:plist
 
 

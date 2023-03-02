@@ -2,6 +2,7 @@ import 'package:driftbottlediary/screens/diary/add_diary_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../shared_module/admob_service.dart';
 import '../../shared_module/diary_repository.dart';
 import 'diary_model.dart';
 
@@ -73,6 +74,7 @@ class DiaryPageController extends GetxController {
     // diaries.assignAll(Diary.getSampleData());
     await _loadEntries();
     await _loadCurrentEntry();
+    Get.find<AdMobService>().loadBannerAd();
     super.onInit();
   }
 }

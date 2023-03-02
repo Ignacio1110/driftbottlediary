@@ -47,5 +47,7 @@
     <true/>
     <key>UIApplicationSupportsIndirectInputEvents</key>
     <true/>
+    <key>GADApplicationIdentifier</key>
+    <string>$(GOOGLE_MOBILE_AD_ID)</string>
   </dict>
 </plist>

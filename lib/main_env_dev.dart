@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:sqflite/sqflite.dart';
 import 'flavors.dart';
 import 'myapp.dart';
@@ -13,12 +14,11 @@ const kDebugSQLite = true;
 void main() {
   F.appFlavor = Flavor.ENV_DEV;
   WidgetsFlutterBinding.ensureInitialized();
-
   if (kDebugSQLite) {
     Sqflite.setDebugModeOn();
   }
 
-  Get.lazyPut(() => AdMobService());
+  Get.lazyPut(() => AdMobService()..initialize());
   Get.put(BottomNavController());
   Get.put(ThemeController());
   Get.put(CachedImageController());

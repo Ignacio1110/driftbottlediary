@@ -43,7 +43,7 @@ dependencies:
   path: ^1.8.2
   get_storage: ^2.0.3
   font_awesome_flutter: ^10.4.0
-  google_mobile_ads: ^1.3.0
+  google_mobile_ads: ^2.3.0
 
 
 dev_dependencies:
@@ -117,3 +117,6 @@ flavorizr:
             value: "ca-app-pub-3940256099942544~3347511713"
       ios:
         bundleId: "com.ignaciozhang85.driftbottlediary.dev"
+        variables:
+          GOOGLE_MOBILE_AD_ID:
+            value: "ca-app-pub-3940256099942544~1458002511"
