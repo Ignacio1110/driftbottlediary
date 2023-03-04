@@ -11,7 +11,7 @@ import 'flavors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-const kDebugSQLite = true;
+const kDebugSQLite = false;
 
 void main() async {
   F.appFlavor = Flavor.ENV_PROD;
