@@ -11,14 +11,16 @@ import 'theme_controller.dart';
 
 const kDebugSQLite = true;
 
-void main() {
+void main() async {
   F.appFlavor = Flavor.ENV_DEV;
   WidgetsFlutterBinding.ensureInitialized();
   if (kDebugSQLite) {
     Sqflite.setDebugModeOn();
   }
 
-  Get.lazyPut(() => AdMobService()..initialize());
+  final adMobService = AdMobService();
+  await adMobService.initialize();
+  Get.put(adMobService);
   Get.put(BottomNavController());
   Get.put(ThemeController());
   Get.put(CachedImageController());

@@ -9,8 +9,8 @@ class AdMobService extends GetxService {
   late final adUnitBannerId;
 
   Future<void> initialize() async {
-    InitializationStatus status = await _initGoogleMobileAds();
     adUnitBannerId = F.bannerId;
+    InitializationStatus status = await _initGoogleMobileAds();
   }
 
   ///Initialize Google Mobile Ads SDK

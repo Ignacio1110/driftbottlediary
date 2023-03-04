@@ -13,7 +13,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 const kDebugSQLite = true;
 
-void main() {
+void main() async {
   F.appFlavor = Flavor.ENV_PROD;
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -21,7 +21,9 @@ void main() {
     Sqflite.setDebugModeOn();
   }
 
-  Get.lazyPut(() => AdMobService()..initialize());
+  final adMobService = AdMobService();
+  await adMobService.initialize();
+  Get.put(adMobService);
   Get.put(BottomNavController());
   Get.put(ThemeController());
   Get.put(CachedImageController());
