@@ -117,6 +117,7 @@ flavorizr:
             value: "ca-app-pub-3940256099942544~3347511713"
       ios:
         bundleId: "com.ignaciozhang85.driftbottlediary.dev"
+        icon: "assets/icons/icon.png"
         variables:
           GOOGLE_MOBILE_AD_ID:
             value: "ca-app-pub-3940256099942544~1458002511"

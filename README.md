@@ -17,11 +17,13 @@ samples, guidance on mobile development, and a full API reference.
 
 
 flutter cli
-#flutter_launcher_icons
+#flutter_launcher_icons 產生icon，在使用flutter flavor後，再用flavor相應檔案產生icon，注意android圖片會覆蓋，因此要複製備份，最後貼回去
 flutter pub get
 flutter pub run flutter_launcher_icons -f <your config file name here>
 flutter pub run flutter_launcher_icons -f flutter_launcher_icons.yaml
-flutter pub run flutter_launcher_icons
+flutter pub run flutter_launcher_icons -f flutter_launcher_icons-env_dev.yaml
+flutter pub run flutter_launcher_icons -f flutter_launcher_icons-env_prod.yaml
+
 
 build runner
 
@@ -58,7 +60,9 @@ flutter run --flavor env_dev -t lib/main_env_dev.dart
 flutter run --release --flavor env_dev -t lib/main_env_dev.dart
 
 flutter run --flavor env_prod -t lib/main.dart
+flutter run --flavor env_prod -t lib/main_env_prod.dart
 flutter run --release --flavor env_prod -t lib/main.dart
+flutter run --release --flavor env_prod -t lib/main_env-prod.dart
 
 使用flavor編譯,打包發佈的東西
 env
