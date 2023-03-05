@@ -44,6 +44,7 @@ flutter pub run flutter_flavorizr -p assets:download,assets:extract
 
 flutter pub run flutter_flavorizr -p android:buildGradle,
 ios:plist
+ios:icons
 
 debug运行（env_dev环境）：flutter run --flavor env_dev -t lib/main-env_dev.dart
 release运行（env_dev环境）：flutter run --release --flavor env_dev -t lib/main-env_dev.dart
@@ -62,7 +63,7 @@ flutter run --release --flavor env_dev -t lib/main_env_dev.dart
 flutter run --flavor env_prod -t lib/main.dart
 flutter run --flavor env_prod -t lib/main_env_prod.dart
 flutter run --release --flavor env_prod -t lib/main.dart
-flutter run --release --flavor env_prod -t lib/main_env-prod.dart
+flutter run --release --flavor env_prod -t lib/main_env_prod.dart
 
 使用flavor編譯,打包發佈的東西
 env
@@ -72,6 +73,11 @@ prod
 （env_prod android）: flutter build apk --flavor env_prod -t lib/main.dart
 （env_prod android）: flutter build appbundle --flavor env_prod -t lib/main.dart
 （env_prod iOS）：flutter build ipa --flavor env_prod -t lib/main.dart
+
+打包的時候可以指定版本號碼
+Both the version and the build number can be overridden in
+flutter build ipa by specifying --build-name and --build-number, respectively.
+
 
 使用flavor 安裝
 
