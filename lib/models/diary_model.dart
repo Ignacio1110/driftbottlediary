@@ -1,6 +1,6 @@
 import 'package:driftbottlediary/shared_module/diary_database.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../components/mood_picker.dart';
+import '../components/mood_picker.dart';
 
 part 'diary_model.g.dart';
 
@@ -38,7 +38,7 @@ class Diary {
   factory Diary.fromJson(Map<String, dynamic> json) => _$DiaryFromJson(json);
   Map<String, dynamic> toJson() => _$DiaryToJson(this);
 
-  Diary copy({
+  Diary copyWith({
     int? id,
     Mood? feelingLevel,
     String? title,

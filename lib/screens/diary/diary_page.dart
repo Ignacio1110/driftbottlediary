@@ -1,3 +1,4 @@
+import 'package:driftbottlediary/components/diary_card.dart';
 import 'package:driftbottlediary/shared_module/admob_service.dart';
 import 'package:driftbottlediary/shared_module/cached_image_controller.dart';
 import 'package:driftbottlediary/translations.dart';
@@ -5,7 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../../components/diary_bottomsheet.dart';
+import 'diary_detail_controller.dart';
+import 'diary_detail_sheet.dart';
 import 'diary_page_controller.dart';
 
 class DiaryPage extends GetView<DiaryPageController> {
@@ -14,6 +19,7 @@ class DiaryPage extends GetView<DiaryPageController> {
   @override
   Widget build(BuildContext context) {
     Get.put(DiaryPageController());
+    final textTheme = Theme.of(context).textTheme;
     return Material(
       child: Column(
         children: [
@@ -22,30 +28,30 @@ class DiaryPage extends GetView<DiaryPageController> {
               slivers: [
                 SliverAppBar(
                   title: Text(DiaryTranslations.app_title.tr),
-                  expandedHeight: 200.0,
+                  // expandedHeight: 100.0,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Get.find<CachedImageController>().bottleImage,
                   ),
                   actions: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            controller.addDiary();
-                          },
-                          icon: Icon(Icons.add),
-                          label: Text('寫心情'),
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(kTextTabBarHeight),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.center,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.only(right: 16),
+                    //     child: ElevatedButton.icon(
+                    //       onPressed: () {
+                    //         controller.addDiary();
+                    //       },
+                    //       icon: Icon(Icons.add),
+                    //       label: Text('寫心情'),
+                    //       style: ElevatedButton.styleFrom(
+                    //         shape: RoundedRectangleBorder(
+                    //           borderRadius:
+                    //               BorderRadius.circular(kTextTabBarHeight),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
                 Obx(() {
@@ -54,27 +60,23 @@ class DiaryPage extends GetView<DiaryPageController> {
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
                         final diary = _diaries[index];
-                        return Column(
-                          children: [
-                            ListTile(
-                              title: Row(
-                                children: [
-                                  FaIcon(diary.feelingLevel.getMoodIcon()),
-                                  const SizedBox(
-                                    width: 4.0,
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DiaryCard(
+                            diary: diary,
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                DiaryModalBottomSheetRoute(
+                                  builder: (_) =>
+                                      DiaryDetailBottomSheet(diary: diary),
+                                  isScrollControlled: true,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0),
                                   ),
-                                  Text(diary.title)
-                                ],
-                              ),
-                              subtitle: Text(
-                                  '${diary.date.day}-${diary.date.month}-${diary.date.year}'),
-                              // trailing: Icon(Icons.arrow_forward_ios),
-                              // onTap: () {
-                              //   // TODO: Navigate to the detail page
-                              // },
-                            ),
-                            Divider(),
-                          ],
+                                ),
+                              );
+                            },
+                          ),
                         );
                       },
                       childCount: _diaries.length,
@@ -84,13 +86,14 @@ class DiaryPage extends GetView<DiaryPageController> {
                 const SliverToBoxAdapter(
                   child: Divider(),
                 ),
-                const SliverToBoxAdapter(
+                SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
-                        "每個人都有想簡單述說的心情\n紀錄每天的心情，會發現生活總有一些開心的時刻 ^_^",
+                        DiaryTranslations.app_diary_foreword.tr,
                         textAlign: TextAlign.center,
+                        style: textTheme.bodyLarge,
                       ),
                     ),
                   ),

@@ -35,20 +35,20 @@ class DiaryTheme {
     900: Color(0xff473847)
   });
 
-  static TextTheme textTheme = TextTheme(
-      bodyText1: TextStyle(color: kPrimarySwatch),
-      bodyText2: TextStyle(color: kPrimarySwatch));
-
   static ThemeData lightTheme = ThemeData(
-    primaryColor: kPrimary,
-    secondaryHeaderColor: kSecondary,
-    primarySwatch: kPrimarySwatch,
-    brightness: Brightness.light,
-    textTheme: textTheme,
-    buttonTheme: ButtonThemeData(
-      buttonColor: kColor3,
-      textTheme: ButtonTextTheme.primary,
-    ),
+    useMaterial3: true,
+    colorSchemeSeed: kPrimary,
+    // primaryColor: kPrimary,
+    // secondaryHeaderColor: kSecondary,
+    // primarySwatch: kPrimarySwatch,
+    // brightness: Brightness.light,
+    // buttonTheme: ButtonThemeData(
+    //   buttonColor: kColor3,
+    //   textTheme: ButtonTextTheme.primary,
+    // ),
+    // bottomAppBarTheme: BottomAppBarTheme(
+    //   color: kColor3,
+    // ),
   );
 
   static final ThemeData darkTheme = ThemeData(

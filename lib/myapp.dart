@@ -1,5 +1,6 @@
 import 'package:driftbottlediary/screens/splash_page.dart';
 import 'package:driftbottlediary/translations.dart';
+import 'package:driftbottlediary/utils/utils.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -9,12 +10,14 @@ import 'package:get/get.dart';
 import 'routes.dart';
 import 'screens/home.dart';
 import 'theme_controller.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    timeago.setLocaleMessages('zh-TW', ZHMessages());
     return GetMaterialApp(
       title: DiaryTranslations.app_title.tr,
       theme: Get.find<ThemeController>().getTheme(),

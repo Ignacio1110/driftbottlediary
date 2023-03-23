@@ -22,6 +22,7 @@ class DiaryTranslations extends Translations {
   static const String new_diary = 'New Diary';
   static const String save = 'save';
   static const String cancel = 'cancel';
+  static const String app_diary_foreword = 'app_diary_foreword';
 
   //diary page
   static const String write_diary = 'write_diary';
@@ -41,6 +42,8 @@ class DiaryTranslations extends Translations {
     new_diary: 'New Diary',
     save: 'save',
     cancel: 'cancel',
+    app_diary_foreword:
+        'Everyone has a mood that they want to briefly describe\nRecord your daily mood, and you will find that there are always some happy moments in life ^_^',
   };
 
   static final Map<String, String> _zhTW = {
@@ -57,7 +60,8 @@ class DiaryTranslations extends Translations {
     mood_question: '你的心情如何？',
     new_diary: '新日誌',
     save: '儲存',
-    cancel: '取消'
+    cancel: '取消',
+    app_diary_foreword: "每個人都有想簡單述說的心情\n紀錄每天的心情，會發現生活總有一些開心的時刻 ^_^",
   };
 
   static String get locale => Get.deviceLocale.toString();

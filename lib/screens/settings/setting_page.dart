@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import '../../translations.dart';
 import 'settings_controller.dart';
 
-class SettingsPage extends StatelessWidget {
-  SettingsPage({super.key});
-
-  final settingsController = Get.put(SettingsController());
+class SettingsPage extends GetView<SettingsController> {
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SettingsController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text(DiaryTranslations.settings.tr),
@@ -35,9 +35,9 @@ class SettingsPage extends StatelessWidget {
                 title: Text(
                   DiaryTranslations.use_english.tr,
                 ),
-                value: settingsController.useEnglishEnabled.value,
+                value: controller.useEnglishEnabled.value,
                 onChanged: (value) {
-                  settingsController.toggleLanguageEnabled();
+                  controller.toggleLanguageEnabled();
                 },
               ),
             ),

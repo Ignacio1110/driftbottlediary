@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../screens/diary/diary_model.dart';
+import '../models/diary_model.dart';
 
 class DiaryDatabase {
   static final DiaryDatabase instance = DiaryDatabase._init();
@@ -46,7 +46,7 @@ class DiaryDatabase {
   Future<Diary> create(Diary diary) async {
     final db = await instance.database;
     final id = await db.insert(tableDiary, diary.toJson());
-    return diary.copy(id: id);
+    return diary.copyWith(id: id);
   }
 
   Future<Diary> read(int id) async {

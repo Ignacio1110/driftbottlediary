@@ -1,4 +1,4 @@
-import '../screens/diary/diary_model.dart';
+import '../models/diary_model.dart';
 import 'diary_database.dart';
 
 class DiaryRepository {

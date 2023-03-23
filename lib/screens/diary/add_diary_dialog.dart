@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../components/mood_picker.dart';
-import 'add_diary_controller.dart';
+import 'edit_diary_controller.dart';
 
-class AddDiaryDialog extends GetView<AddDiaryController> {
+@Deprecated('舊設計')
+class AddDiaryDialog extends GetView<EditDiaryController> {
   const AddDiaryDialog({Key? key}) : super(key: key);
 
   @override
