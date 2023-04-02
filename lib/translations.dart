@@ -21,8 +21,13 @@ class DiaryTranslations extends Translations {
   static const String mood_question = 'mood_question';
   static const String new_diary = 'New Diary';
   static const String save = 'save';
+  static const String confirm = 'confirm';
+
   static const String cancel = 'cancel';
   static const String app_diary_foreword = 'app_diary_foreword';
+  static const String delete_diary_dialog_title = 'delete_diary_dialog_title';
+  static const String delete_diary_dialog_content =
+      'delete_diary_dialog_content';
 
   //diary page
   static const String write_diary = 'write_diary';
@@ -41,7 +46,10 @@ class DiaryTranslations extends Translations {
     mood_question: 'How are you feeling today?',
     new_diary: 'New Diary',
     save: 'save',
+    confirm: 'confirm',
     cancel: 'cancel',
+    delete_diary_dialog_title: 'delete diary',
+    delete_diary_dialog_content: 'Are you sure want to delete this diary',
     app_diary_foreword:
         'Everyone has a mood that they want to briefly describe\nRecord your daily mood, and you will find that there are always some happy moments in life ^_^',
   };
@@ -60,7 +68,10 @@ class DiaryTranslations extends Translations {
     mood_question: '你的心情如何？',
     new_diary: '新日誌',
     save: '儲存',
+    confirm: '確認',
     cancel: '取消',
+    delete_diary_dialog_title: '刪除日記',
+    delete_diary_dialog_content: '這篇日記將被移除！是否繼續?',
     app_diary_foreword: "每個人都有想簡單述說的心情\n紀錄每天的心情，會發現生活總有一些開心的時刻 ^_^",
   };
 

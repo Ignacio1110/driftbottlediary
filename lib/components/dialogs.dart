@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../translations.dart';
 import 'anim.dart';
 
 Widget simpleDeleteDialog(BuildContext context, {Function()? confirm}) {
   return AlertDialog(
-    title: Text('刪除日記'),
-    content: Text('這篇日記將被移除！是否繼續'),
+    title: Text(DiaryTranslations.delete_diary_dialog_title.tr),
+    content: Text(DiaryTranslations.delete_diary_dialog_content.tr),
     actions: [
       TextButton(
         onPressed: () {
           Navigator.pop(context);
         },
-        child: Text('取消'),
+        child: Text(DiaryTranslations.cancel.tr),
       ),
       if (confirm != null)
         TextButton(
@@ -21,7 +22,7 @@ Widget simpleDeleteDialog(BuildContext context, {Function()? confirm}) {
             confirm();
             Navigator.pop(context);
           },
-          child: Text('確認'),
+          child: Text(DiaryTranslations.confirm.tr),
         ),
     ],
   );

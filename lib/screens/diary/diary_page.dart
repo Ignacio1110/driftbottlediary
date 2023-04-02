@@ -30,7 +30,10 @@ class DiaryPage extends GetView<DiaryPageController> {
                   title: Text(DiaryTranslations.app_title.tr),
                   // expandedHeight: 100.0,
                   flexibleSpace: FlexibleSpaceBar(
-                    background: Get.find<CachedImageController>().bottleImage,
+                    background: Align(
+                      alignment: Alignment.centerRight,
+                      child: Get.find<CachedImageController>().bottleImage,
+                    ),
                   ),
                   actions: [
                     // Align(
