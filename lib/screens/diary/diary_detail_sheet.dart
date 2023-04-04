@@ -46,12 +46,13 @@ class DiaryDetailBottomSheet extends GetView<DiaryDetailController> {
                                       FontAwesomeIcons.filePen,
                                     ),
                                   ),
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: const FaIcon(
-                                      FontAwesomeIcons.shareNodes,
-                                    ),
-                                  ),
+                                  //TODO: next spring
+                                  // IconButton(
+                                  //   onPressed: () {},
+                                  //   icon: const FaIcon(
+                                  //     FontAwesomeIcons.shareNodes,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
