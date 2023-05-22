@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     timeago.setLocaleMessages('zh-TW', ZHMessages());
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: DiaryTranslations.app_title.tr,
       theme: Get.find<ThemeController>().getTheme(),
       locale: const Locale('zh', 'TW'),
