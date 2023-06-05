@@ -10,44 +10,28 @@ class BottomNavBar extends GetView<BottomNavController> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceTint.withOpacity(.1),
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).padding.bottom / 2,
-          top: MediaQuery.of(context).padding.bottom / 2,
-          left: MediaQuery.of(context).padding.bottom / 2 + kBottomSheetPadding,
-          right:
-              MediaQuery.of(context).padding.bottom / 2 + kBottomSheetPadding,
-        ),
-        child: ConstrainedBox(
-          constraints: BoxConstraints.tightFor(height: 56),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  controller.changePage(0);
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.bookQuran,
-                  size: 30,
-                ),
+    return Obx(
+      () => BottomNavigationBar(
+          currentIndex: controller.currentIndex.value,
+          onTap: (index) {
+            controller.changePage(index);
+          },
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              label: "日記", //TODO
+              icon: const FaIcon(
+                FontAwesomeIcons.bookQuran,
+                size: 30,
               ),
-              IconButton(
-                onPressed: () {
-                  controller.changePage(1);
-                },
-                icon: const Icon(
-                  Icons.settings,
-                  size: 30,
-                ),
+            ),
+            BottomNavigationBarItem(
+              label: "設定", //TODO
+              icon: const FaIcon(
+                Icons.settings,
+                size: 30,
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          ]),
     );
   }
 }

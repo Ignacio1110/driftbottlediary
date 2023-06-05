@@ -28,7 +28,7 @@ class MyHomePage extends GetView<BottomNavController> {
         ),
         bottomNavigationBar: const BottomNavBar(),
         floatingActionButton: const FloatingActionView(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       ),
     );
   }

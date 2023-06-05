@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 
 import 'float_action_controller.dart';
 
@@ -8,22 +9,16 @@ class FloatingActionView extends GetView<FloatingActionController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(FloatingActionController());
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).padding.bottom / 2,
-        top: MediaQuery.of(context).padding.bottom / 2,
-      ),
-      child: FloatingActionButton(
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: const [
-            Icon(Icons.add),
-          ],
-        ),
-        onPressed: () {
-          controller.addDiary();
-        },
+    return SizedBox(
+      width: 200,
+      height: 200,
+      child: RiveAnimation.asset(
+        'assets/animations/cat_following_the_mouse.riv',
+        animations: [
+          'Idle',
+          'Blink',
+        ],
+        stateMachines: ['State Machine 1'],
       ),
     );
   }

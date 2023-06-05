@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 
 import '../../translations.dart';
 import 'settings_controller.dart';
@@ -39,6 +40,14 @@ class SettingsPage extends GetView<SettingsController> {
                 onChanged: (value) {
                   controller.toggleLanguageEnabled();
                 },
+              ),
+            ),
+            SizedBox(
+              width: 100,
+              height: 100,
+              child: RiveAnimation.asset(
+                'assets/animations/note_book_demo.riv',
+                animations: ['flip'],
               ),
             ),
           ],

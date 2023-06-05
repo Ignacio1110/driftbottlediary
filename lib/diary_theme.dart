@@ -53,7 +53,7 @@ class DiaryTheme {
 
   static final ThemeData darkTheme = ThemeData(
     primarySwatch: Colors.blue,
-    accentColor: Colors.pink,
+    // accentColor: Colors.pink,
     brightness: Brightness.dark,
     buttonTheme: ButtonThemeData(
       buttonColor: Colors.blue,

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:rive/rive.dart';
 
 import '../../components/diary_bottomsheet.dart';
 import 'diary_detail_controller.dart';
@@ -28,33 +29,19 @@ class DiaryPage extends GetView<DiaryPageController> {
               slivers: [
                 SliverAppBar(
                   title: Text(DiaryTranslations.app_title.tr),
-                  // expandedHeight: 100.0,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: Align(
-                      alignment: Alignment.centerRight,
-                      child: Get.find<CachedImageController>().bottleImage,
-                    ),
-                  ),
                   actions: [
-                    // Align(
-                    //   alignment: Alignment.center,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.only(right: 16),
-                    //     child: ElevatedButton.icon(
-                    //       onPressed: () {
-                    //         controller.addDiary();
-                    //       },
-                    //       icon: Icon(Icons.add),
-                    //       label: Text('寫心情'),
-                    //       style: ElevatedButton.styleFrom(
-                    //         shape: RoundedRectangleBorder(
-                    //           borderRadius:
-                    //               BorderRadius.circular(kTextTabBarHeight),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: IconButton(
+                          onPressed: () {
+                            controller.addDiary();
+                          },
+                          icon: Icon(Icons.add),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 Obx(() {
@@ -101,23 +88,25 @@ class DiaryPage extends GetView<DiaryPageController> {
                     ),
                   ),
                 ),
+                // SliverToBoxAdapter(
+                //   child: Obx(
+                //     () {
+                //       BannerAd? ad = Get.find<AdMobService>().bannerAd.value;
+                //       return ad == null
+                //           ? const SizedBox()
+                //           : Padding(
+                //               padding: const EdgeInsets.all(8.0),
+                //               child: SizedBox(
+                //                   width: ad.size.width.toDouble(),
+                //                   height: ad.size.height.toDouble(),
+                //                   child: AdWidget(ad: ad)),
+                //             );
+                //     },
+                //   ),
+                // )
               ],
             ),
           ),
-          Obx(() {
-            BannerAd? ad = Get.find<AdMobService>().bannerAd.value;
-            return ad == null
-                ? const SizedBox()
-                : SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                          width: ad.size.width.toDouble(),
-                          height: ad.size.height.toDouble(),
-                          child: AdWidget(ad: ad)),
-                    ),
-                  );
-          }),
         ],
       ),
     );
