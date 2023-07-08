@@ -1,5 +1,5 @@
-import 'package:driftbottlediary/consts.dart';
 import 'package:driftbottlediary/screens/bottom_nav_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -11,22 +11,20 @@ class BottomNavBar extends GetView<BottomNavController> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Obx(
-      () => BottomNavigationBar(
+      () => CupertinoTabBar(
           currentIndex: controller.currentIndex.value,
           onTap: (index) {
             controller.changePage(index);
           },
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              label: "日記", //TODO
-              icon: const FaIcon(
+              icon: FaIcon(
                 FontAwesomeIcons.bookQuran,
                 size: 30,
               ),
             ),
             BottomNavigationBarItem(
-              label: "設定", //TODO
-              icon: const FaIcon(
+              icon: FaIcon(
                 Icons.settings,
                 size: 30,
               ),

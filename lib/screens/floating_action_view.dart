@@ -9,9 +9,9 @@ class FloatingActionView extends GetView<FloatingActionController> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200,
-      height: 200,
+    return const SizedBox(
+      width: 140,
+      height: 140,
       child: RiveAnimation.asset(
         'assets/animations/cat_following_the_mouse.riv',
         animations: [

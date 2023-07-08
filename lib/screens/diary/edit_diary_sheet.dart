@@ -20,61 +20,69 @@ class EditDiarySheet extends GetView<EditDiaryController> {
       children: [
         const HandleBar(),
         Expanded(
+          child: SingleChildScrollView(
             child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: kBottomSheetPadding,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Obx(
+                    () => MoodPicker(
+                      selectedMood: controller.selectedMood.value,
+                      onChange: (Mood mood) {
+                        controller.selectedMood.value = mood;
+                      },
+                    ),
+                  ),
+                  TextField(
+                    controller: controller.titleController,
+                    maxLines: 2,
+                    decoration: const InputDecoration(
+                      hintText: 'Title',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    // scrollPhysics: NeverScrollableScrollPhysics(),
+                    controller: controller.contentController,
+                    expands: false,
+                    maxLines: 100,
+                    minLines: 1,
+                    decoration: const InputDecoration(
+                      hintText: 'Content',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 8.0,
             horizontal: kBottomSheetPadding,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Obx(
-                () => MoodPicker(
-                  selectedMood: controller.selectedMood.value,
-                  onChange: (Mood mood) {
-                    controller.selectedMood.value = mood;
-                  },
-                ),
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text(DiaryTranslations.cancel.tr),
               ),
-              TextField(
-                controller: controller.titleController,
-                maxLines: 2,
-                decoration: const InputDecoration(
-                  hintText: 'Title',
-                ),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: TextField(
-                  controller: controller.contentController,
-                  expands: true,
-                  maxLines: null,
-                  minLines: null,
-                  decoration: const InputDecoration(
-                    hintText: 'Content',
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text(DiaryTranslations.cancel.tr),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.saveDiary();
-                    },
-                    child: Text(DiaryTranslations.save.tr),
-                  ),
-                ],
+              ElevatedButton(
+                onPressed: () {
+                  controller.saveDiary();
+                },
+                child: Text(DiaryTranslations.save.tr),
               ),
             ],
           ),
-        )),
+        ),
       ],
     );
   }

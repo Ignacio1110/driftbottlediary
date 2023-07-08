@@ -29,6 +29,14 @@ class DiaryPage extends GetView<DiaryPageController> {
               slivers: [
                 SliverAppBar(
                   title: Text(DiaryTranslations.app_title.tr),
+                  leading: SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: RiveAnimation.asset(
+                      'assets/animations/note_book_demo.riv',
+                      animations: ['flip'],
+                    ),
+                  ),
                   actions: [
                     Align(
                       alignment: Alignment.center,
@@ -88,22 +96,6 @@ class DiaryPage extends GetView<DiaryPageController> {
                     ),
                   ),
                 ),
-                // SliverToBoxAdapter(
-                //   child: Obx(
-                //     () {
-                //       BannerAd? ad = Get.find<AdMobService>().bannerAd.value;
-                //       return ad == null
-                //           ? const SizedBox()
-                //           : Padding(
-                //               padding: const EdgeInsets.all(8.0),
-                //               child: SizedBox(
-                //                   width: ad.size.width.toDouble(),
-                //                   height: ad.size.height.toDouble(),
-                //                   child: AdWidget(ad: ad)),
-                //             );
-                //     },
-                //   ),
-                // )
               ],
             ),
           ),
