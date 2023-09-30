@@ -27,12 +27,16 @@ class F {
     switch (appFlavor) {
       case Flavor.ENV_PROD:
         return Platform.isAndroid
-            ? 'ca-app-pub-your------ id'
-            : 'ca-app-pub-your------- id';
+            //從dart define的值中取得正式環境的廣告id
+            ? const String.fromEnvironment('GOOGLE_MOBILE_AD_ID_ANDROID_BANNER')
+            //從dart define的值中取得正式環境的廣告id
+            : const String.fromEnvironment('GOOGLE_MOBILE_AD_ID_IOS_BANNER');
       default:
         return Platform.isAndroid
-            ? 'ca-app-pub-3940256099942544/6300978111'
-            : 'ca-app-pub-3940256099942544/2934735716';
+            //官方提供的測試banner id 'ca-app-pub-3940256099942544/6300978111'
+            ? const String.fromEnvironment('GOOGLE_MOBILE_AD_ID_ANDROID_BANNER')
+            // 官方提供的測試banner id 'ca-app-pub-3940256099942544/2934735716';
+            : const String.fromEnvironment('GOOGLE_MOBILE_AD_ID_IOS_BANNER');
     }
   }
 

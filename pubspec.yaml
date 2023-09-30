@@ -118,3 +118,11 @@ flavorizr:
       ios:
         bundleId: "com.ignaciozhang85.driftbottlediary.dev"
         icon: "assets/icons/icon.png"
+    env_prod:
+      app:
+        name: "Drift Bottle Diary"
+      android:
+        applicationId: "com.ignaciozhang85.driftbottlediary.prod"
+      ios:
+        bundleId: "com.ignaciozhang85.driftbottlediary.prod"
+        icon: "assets/icons/icon.png"
