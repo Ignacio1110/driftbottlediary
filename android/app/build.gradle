@@ -27,6 +27,16 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def dartEnvironmentVariables = []
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -41,7 +51,7 @@ android {
             dimension "flavor-type"
             applicationId "com.ignaciozhang85.driftbottlediary.dev"
             resValue "string", "app_name", "Dev Drift Bottle Diary"
-            resValue "string", "admob_id", "ca-app-pub-3940256099942544~3347511713"
+            resValue "string", "admob_id", dartEnvironmentVariables.GOOGLE_MOBILE_AD_ID_ANDROID
         }
     }
 

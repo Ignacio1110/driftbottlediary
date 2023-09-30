@@ -62,7 +62,7 @@ dev_dependencies:
   build_runner: ^2.3.3
   json_serializable: ^6.6.1
   flutter_launcher_icons: ^0.13.1
-#  flutter_flavorizr: ^2.1.5
+  flutter_flavorizr: ^2.1.5
 
 
 # For information on the generic Dart part of this file, see the
@@ -115,13 +115,6 @@ flavorizr:
         name: "Dev Drift Bottle Diary"
       android:
         applicationId: "com.ignaciozhang85.driftbottlediary.dev"
-        resValues:
-          admob_id:
-            type: "string"
-            value: "ca-app-pub-3940256099942544~3347511713"
       ios:
         bundleId: "com.ignaciozhang85.driftbottlediary.dev"
         icon: "assets/icons/icon.png"
-        variables:
-          GOOGLE_MOBILE_AD_ID:
-            value: "ca-app-pub-3940256099942544~1458002511"
