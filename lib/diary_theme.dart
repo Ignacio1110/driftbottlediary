@@ -7,6 +7,19 @@ class DiaryTheme {
   static const Color kColor3 = Color(0xff93A7AA);
   static const Color kColor4 = Color(0xffA7B5B9);
 
+  static const Color loginGradientStart = Color(0xff5b949d);
+  static const Color loginGradientEnd = Color(0xffa29d9d);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
+  static const Color red = Color(0xFFDB5F5F);
+
+  static const LinearGradient primaryGradient = LinearGradient(
+    colors: <Color>[loginGradientStart, loginGradientEnd],
+    stops: <double>[0.0, 1.0],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+
   static const MaterialColor kPrimarySwatch =
       MaterialColor(0xff3f8a75, <int, Color>{
     50: Color(0xffe1f0ed),

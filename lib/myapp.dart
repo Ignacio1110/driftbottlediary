@@ -1,3 +1,4 @@
+import 'package:driftbottlediary/screens/auth_pages/login_page.dart';
 import 'package:driftbottlediary/screens/splash_page.dart';
 import 'package:driftbottlediary/translations.dart';
 import 'package:driftbottlediary/utils/utils.dart';
@@ -12,8 +13,18 @@ import 'screens/home.dart';
 import 'theme_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +54,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: AppRoutes.HOME,
           page: () => const MyHomePage(),
+        ),
+        GetPage(
+          name: AppRoutes.LOGIN,
+          page: () => const LoginPage(),
         ),
       ],
     );

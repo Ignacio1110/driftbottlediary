@@ -43,5 +43,13 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-config.dev.json
-config.prod.json
+config/config.dev.json
+config/config.prod.json
+config/
+
+# Firebase config
+ios/firebase_app_id_file.json
+ios/config/env_dev/GoogleService-Info.plist
+ios/config/env_prod/GoogleService-Info.plist
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json

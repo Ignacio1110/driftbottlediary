@@ -54,10 +54,12 @@ class EditDiaryController extends GetxController {
       Get.back(result: editedDiary);
     } else {
       Diary diary = Diary(
-          feelingLevel: mood,
-          title: title,
-          content: content,
-          date: DateTime.now());
+        feelingLevel: mood,
+        title: title,
+        content: content,
+        date: DateTime.now(),
+        uploaded: 0,
+      );
       Get.back(result: diary);
     }
   }
