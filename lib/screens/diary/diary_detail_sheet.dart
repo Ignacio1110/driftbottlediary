@@ -3,9 +3,11 @@ import 'package:driftbottlediary/models/diary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../components/custom_sliver_persistent_header_delegate.dart';
 import '../../consts.dart';
+import '../../shared_module/admob_service.dart';
 import 'diary_detail_controller.dart';
 
 class DiaryDetailBottomSheet extends GetView<DiaryDetailController> {
@@ -110,6 +112,22 @@ class DiaryDetailBottomSheet extends GetView<DiaryDetailController> {
                     child: Divider(),
                   ),
                   //詳細內容
+                  SliverToBoxAdapter(
+                    child: Obx(
+                      () {
+                        BannerAd? ad = Get.find<AdMobService>().bannerAd.value;
+                        return ad == null
+                            ? const SizedBox()
+                            : Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SizedBox(
+                                    width: ad.size.width.toDouble(),
+                                    height: ad.size.height.toDouble(),
+                                    child: AdWidget(ad: ad)),
+                              );
+                      },
+                    ),
+                  ),
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(

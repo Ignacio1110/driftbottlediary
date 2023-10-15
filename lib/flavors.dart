@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+
 import 'shared_module/admob_service.dart';
 
 enum Flavor {
@@ -23,6 +25,7 @@ class F {
     }
   }
 
+  //廣告
   static String get bannerId {
     switch (appFlavor) {
       case Flavor.ENV_PROD:
@@ -61,4 +64,52 @@ class F {
             : 'ca-app-pub-3940256099942544/1712485313';
     }
   }
+
+  static FirebaseOptions get firebaseOptions {
+    switch (appFlavor) {
+      case Flavor.ENV_PROD:
+        return Platform.isAndroid ? androidProd : iosProd;
+      default:
+        return Platform.isAndroid ? androidDev : iosDev;
+    }
+  }
+
+  //firebase
+  static const FirebaseOptions androidDev = FirebaseOptions(
+    apiKey: String.fromEnvironment('FIREBASE_API_KEY_ANDROID'),
+    appId: '1:681570670467:android:f441c3711f7f010b8d48b6',
+    messagingSenderId: '681570670467',
+    projectId: 'driftbottlediary-dev',
+    storageBucket: 'driftbottlediary-dev.appspot.com',
+  );
+
+  static const FirebaseOptions iosDev = FirebaseOptions(
+    apiKey: String.fromEnvironment('FIREBASE_API_KEY_IOS'),
+    appId: '1:681570670467:ios:2322b8da05b143d88d48b6',
+    messagingSenderId: '681570670467',
+    projectId: 'driftbottlediary-dev',
+    storageBucket: 'driftbottlediary-dev.appspot.com',
+    iosClientId:
+        '681570670467-9g87oefuq1fcdsg237oqem5vtuaanq3q.apps.googleusercontent.com',
+    iosBundleId: 'com.ignaciozhang85.driftbottlediary.dev',
+  );
+
+  static const FirebaseOptions androidProd = FirebaseOptions(
+    apiKey: String.fromEnvironment('FIREBASE_API_KEY_ANDROID'),
+    appId: '1:913191307011:android:4bf85238fbdf6e30c38b36',
+    messagingSenderId: '913191307011',
+    projectId: 'driftbottlediary',
+    storageBucket: 'driftbottlediary.appspot.com',
+  );
+
+  static const FirebaseOptions iosProd = FirebaseOptions(
+    apiKey: String.fromEnvironment('FIREBASE_API_KEY_IOS'),
+    appId: '1:913191307011:ios:01cf029fdd166333c38b36',
+    messagingSenderId: '913191307011',
+    projectId: 'driftbottlediary',
+    storageBucket: 'driftbottlediary.appspot.com',
+    iosClientId:
+        '913191307011-rfliifmcqqu9qcdhhlfgkb3j2v73kvu8.apps.googleusercontent.com',
+    iosBundleId: 'com.ignaciozhang85.driftbottlediary.prod',
+  );
 }

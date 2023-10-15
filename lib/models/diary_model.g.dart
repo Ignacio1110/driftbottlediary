@@ -11,7 +11,8 @@ Diary _$DiaryFromJson(Map<String, dynamic> json) => Diary(
       feelingLevel: $enumDecode(_$MoodEnumMap, json['feeling_level']),
       title: json['title'] as String,
       content: json['content'] as String,
-      date: DateTime.parse(json['date'] as String),
+      date: dateTimeFromEpochOrString(json['date']),
+      uploaded: json['uploaded'] as int,
     );
 
 Map<String, dynamic> _$DiaryToJson(Diary instance) => <String, dynamic>{
@@ -19,7 +20,8 @@ Map<String, dynamic> _$DiaryToJson(Diary instance) => <String, dynamic>{
       'feeling_level': _$MoodEnumMap[instance.feelingLevel]!,
       'title': instance.title,
       'content': instance.content,
-      'date': instance.date.toIso8601String(),
+      'date': dateTimeToEpoch(instance.date),
+      'uploaded': instance.uploaded,
     };
 
 const _$MoodEnumMap = {

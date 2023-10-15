@@ -20,7 +20,12 @@ class DiaryDatabase {
   Future<Database> _initDB(String filepath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filepath);
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(
+      path,
+      version: 2,
+      onCreate: _createDB,
+      onUpgrade: _updateTableDiaryV1toV2,
+    );
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -34,9 +39,19 @@ class DiaryDatabase {
         ${DiaryFields.feelingLevel} $textType,
         ${DiaryFields.title} $textType,
         ${DiaryFields.content} $textType,
-        ${DiaryFields.date} $dateType
+        ${DiaryFields.date} $dateType,
+        ${DiaryFields.uploaded} $dateType
       )
     ''');
+  }
+
+  /// Update Diary table V1 to V2
+  void _updateTableDiaryV1toV2(
+      Database db, int oldVersion, int newVersion) async {
+    if (oldVersion == 1) {
+      await db.execute(
+          'ALTER TABLE $tableDiary ADD COLUMN ${DiaryFields.uploaded} INTEGER NOT NULL DEFAULT 0');
+    }
   }
 
   Future<void> deleteTable(Database db, String tableName) async {
@@ -76,9 +91,30 @@ class DiaryDatabase {
     return db.update(
       tableDiary,
       diary.toJson(),
-      where: '${DiaryFields.id} = ?',
-      whereArgs: [diary.id],
+      where: '${DiaryFields.date} = ?',
+      whereArgs: [diary.date.microsecondsSinceEpoch],
     );
+  }
+
+  Future<void> updateOrInsertByDate(Diary diary) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableDiary,
+      columns: DiaryFields.getFields(),
+      where: '${DiaryFields.date} = ?',
+      whereArgs: [diary.date.microsecondsSinceEpoch],
+    );
+    if (maps.isNotEmpty) {
+       await db.update(
+        tableDiary,
+        diary.toJson(),
+        where: '${DiaryFields.date} = ?',
+        whereArgs: [diary.date.microsecondsSinceEpoch],
+      );
+    } else {
+      diary.id =null;
+      await  create(diary);
+    }
   }
 
   Future<int> delete(int id) async {
@@ -104,6 +140,8 @@ class DiaryFields {
   static const String title = 'title';
   static const String content = 'content';
   static const String date = 'date';
+  static const String uploaded = 'uploaded';
 
-  static List<String> getFields() => [id, feelingLevel, title, content, date];
+  static List<String> getFields() =>
+      [id, feelingLevel, title, content, date, uploaded];
 }
