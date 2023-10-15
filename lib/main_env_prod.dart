@@ -19,6 +19,7 @@ void main() async {
   F.appFlavor = Flavor.ENV_PROD;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'driftbottlediary',
     options: F.firebaseOptions,
   );
   if (kDebugSQLite) {
