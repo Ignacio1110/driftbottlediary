@@ -26,15 +26,30 @@ Widget simpleDeleteDialog(BuildContext context, {Function()? confirm}) {
         ),
     ],
   );
-  // return AwesomeDialog(
-  //   context: context,
-  //   dialogType: DialogType.info,
-  //   animType: AnimType.rightSlide,
-  //   title: 'Dialog Title',
-  //   desc: 'Dialog description here.............',
-  //   btnCancelOnPress: () {},
-  //   btnOkOnPress: () {},
-  // )..show();
+}
+
+Widget simpleDialog({
+ required String title,
+ required String content,
+}) {
+  return AlertDialog(
+    title: Text(title),
+    content: Text(content),
+    actions: [
+      TextButton(
+        onPressed: () {
+          Get.back(result: false);
+        },
+        child: Text(DiaryTranslations.cancel.tr),
+      ),
+      TextButton(
+        onPressed: () {
+          Get.back(result: true);
+        },
+        child: Text(DiaryTranslations.confirm.tr),
+      ),
+    ],
+  );
 }
 
 ///提供客製化方法給Getx

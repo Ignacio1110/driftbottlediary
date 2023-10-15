@@ -26,8 +26,7 @@ class SettingsController extends GetxController {
   }
 
   Future<void> downloadDiaryFromCloud() async {
-
-   await DiaryRepository.instance.downloadAllDiary();
+    await DiaryRepository.instance.downloadAllDiary();
   }
 
   void toggleNotifications() {

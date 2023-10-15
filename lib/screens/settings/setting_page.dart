@@ -1,3 +1,4 @@
+import 'package:driftbottlediary/components/dialogs.dart';
 import 'package:driftbottlediary/diary_theme.dart';
 import 'package:driftbottlediary/shared_module/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rive/rive.dart';
 
+import '../../components/anim.dart';
 import '../../shared_module/admob_service.dart';
 import '../../translations.dart';
 import 'curve.dart';
@@ -54,7 +56,7 @@ class SettingsPage extends GetView<SettingsController> {
                                       DiaryTranslations.login_to_upload_data.tr,
                                       style: textTheme.titleMedium,
                                     ),
-                                    Icon(Icons.chevron_right),
+                                    const Icon(Icons.chevron_right),
                                   ],
                                 ),
                               )
@@ -135,7 +137,7 @@ class SettingsPage extends GetView<SettingsController> {
                       },
                       child: Center(
                         child: Text(
-                         DiaryTranslations.signOut.tr,
+                          DiaryTranslations.signOut.tr,
                         ),
                       ),
                     ),
@@ -149,8 +151,17 @@ class SettingsPage extends GetView<SettingsController> {
                         const EdgeInsets.only(top: 8.0, left: 16, right: 16),
                     child: TextButton(
                       style: buttonDeleteStyle,
-                      onPressed: () {
-                        Get.find<FirebaseAuthService>().deleteAccount();
+                      onPressed: () async {
+                        final result = await Get.customDialog(
+                          simpleDialog(
+                            title: DiaryTranslations.deleteAccount.tr,
+                            content: '',
+                          ),
+                          animType: AnimType.rightSlide,
+                        );
+                        if (result == true) {
+                          Get.find<FirebaseAuthService>().deleteAccount();
+                        }
                       },
                       child: Center(
                         child: Text(
@@ -160,20 +171,6 @@ class SettingsPage extends GetView<SettingsController> {
                     ),
                   ),
           ),
-          // Obx(
-          //   () {
-          //     BannerAd? ad = Get.find<AdMobService>().bannerAd.value;
-          //     return ad == null
-          //         ? const SizedBox()
-          //         : Padding(
-          //             padding: const EdgeInsets.all(8.0),
-          //             child: SizedBox(
-          //                 width: ad.size.width.toDouble(),
-          //                 height: ad.size.height.toDouble(),
-          //                 child: AdWidget(ad: ad)),
-          //           );
-          //   },
-          // )
         ],
       ),
     );
